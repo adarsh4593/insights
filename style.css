@@ -1,0 +1,184 @@
+/* Base Styles */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #000;
+    color: #fff;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Header */
+.header {
+    background-color: #111;
+    padding: 20px 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+/* Hero Section */
+.hero {
+    background: #222;
+    padding: 60px 0;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #aaa;
+}
+
+/* Blog Cards */
+.blog-section {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin: 40px 0;
+}
+
+.blog-card {
+    background: #111;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    transition: transform 0.3s;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+}
+
+.blog-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.blog-card h3 {
+    margin: 15px;
+    font-size: 20px;
+}
+
+.blog-card p {
+    margin: 0 15px 15px;
+    color: #bbb;
+}
+
+.read-more {
+    display: block;
+    margin: 0 15px 15px;
+    color: #00bfff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+/* Newsletter Section */
+.newsletter-section {
+    background: #111;
+    padding: 40px 20px;
+    text-align: center;
+    color: #bbb;
+    border-top: 2px solid #333;
+}
+
+.newsletter-section h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.newsletter-section p {
+    margin-bottom: 30px;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.newsletter-form input {
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    width: 300px;
+    font-size: 16px;
+}
+
+.newsletter-form button {
+    padding: 10px 20px;
+    background-color: #00bfff;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.newsletter-form button:hover {
+    background-color: #008fbf;
+}
+
+/* Footer */
+.footer {
+    background: #111;
+    text-align: center;
+    padding: 20px 0;
+    font-size: 14px;
+    color: #777;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+    .nav ul {
+        flex-direction: column;
+        background-color: #111;
+        position: absolute;
+        top: 80px;
+        right: 0;
+        width: 200px;
+        display: none;
+    }
+    
+    .nav ul.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+        color: #fff;
+    }
+}

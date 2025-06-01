@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Resume Generator with ChatGPT API</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fff;
+      color: #111;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background-color: #000;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+    h1, h2 {
+      color: #000;
+    }
+    p, li {
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+    }
+    button {
+      background-color: black;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    pre {
+      background-color: #f4f4f4;
+      padding: 15px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      border: 1px solid #ddd;
+    }
+    .read-more {
+      display: inline-block;
+      margin-top: 30px;
+      background: #000;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Build Real Projects with ChatGPT API</h1>
+  <p>Part 3: Resume Generator</p>
+</header>
+
+<main>
+  <h2>🎯 What Are We Building?</h2>
+  <p>
+    We'll create a form that takes a user's job role, skills, experience, and outputs a formatted resume using OpenAI's ChatGPT API.
+  </p>
+
+  <h2>🧰 Requirements</h2>
+  <ul>
+    <li>OpenAI API key</li>
+    <li>Basic HTML/CSS/JavaScript</li>
+    <li>Vercel, Netlify, or GitHub Pages (for hosting)</li>
+  </ul>
+
+  <h2>📑 Step 1: HTML Resume Form</h2>
+  <pre><code>&lt;form id="resumeForm"&gt;
+  &lt;label&gt;Full Name:&lt;/label&gt;
+  &lt;input type="text" id="name" required /&gt;
+
+  &lt;label&gt;Job Role:&lt;/label&gt;
+  &lt;input type="text" id="role" required /&gt;
+
+  &lt;label&gt;Skills:&lt;/label&gt;
+  &lt;input type="text" id="skills" placeholder="e.g., HTML, CSS, JS, Python" /&gt;
+
+  &lt;label&gt;Experience:&lt;/label&gt;
+  &lt;textarea id="experience" rows="4"&gt;&lt;/textarea&gt;
+
+  &lt;button type="button" onclick="generateResume()"&gt;Generate Resume&lt;/button&gt;
+&lt;/form&gt;
+
+&lt;h3&gt;Generated Resume:&lt;/h3&gt;
+&lt;pre id="output"&gt;&lt;/pre&gt;</code></pre>
+
+  <h2>🎨 Step 2: Basic Styling</h2>
+  <p>The styling above is already included in the page’s CSS. Feel free to tweak it as needed.</p>
+
+  <h2>⚙️ Step 3: JavaScript with ChatGPT API</h2>
+  <pre><code>async function generateResume() {
+  const name = document.getElementById("name").value;
+  const role = document.getElementById("role").value;
+  const skills = document.getElementById("skills").value;
+  const experience = document.getElementById("experience").value;
+  const output = document.getElementById("output");
+
+  const prompt = `Generate a professional resume for the following:
+  Name: ${name}
+  Role: ${role}
+  Skills: ${skills}
+  Experience: ${experience}`;
+
+  const response = await fetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer YOUR_OPENAI_API_KEY"
+    },
+    body: JSON.stringify({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: prompt }]
+    })
+  });
+
+  const data = await response.json();
+  const resumeText = data.choices[0].message.content;
+  output.textContent = resumeText;
+}</code></pre>
+
+  <h2>🔒 Tip for Security</h2>
+  <p>Do <strong>not</strong> expose your API key in a public repository or front-end. Use a backend or a proxy server.</p>
+
+  <h2>📤 Optional: Download Resume as Text or PDF</h2>
+  <p>With a little JS or a library like jsPDF, you can let users download the generated resume.</p>
+
+  <a href="../index.html" class="read-more">← Back to Blog Home</a>
+</main>
+
+<footer>
+  <p>&copy; 2025 YourName. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

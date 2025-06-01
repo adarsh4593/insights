@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Deploy ChatGPT Projects Online</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #fff;
+      color: #111;
+      margin: 0;
+      padding: 0;
+    }
+    header, footer {
+      background: #000;
+      color: white;
+      text-align: center;
+      padding: 20px;
+    }
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+    h1, h2 {
+      color: #000;
+    }
+    p, li {
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    code {
+      background: #f4f4f4;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    pre {
+      background: #f9f9f9;
+      padding: 15px;
+      border: 1px solid #ddd;
+      overflow-x: auto;
+    }
+    .read-more {
+      display: inline-block;
+      margin-top: 30px;
+      background: #000;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Build Real Projects with ChatGPT API</h1>
+  <p>Part 4: Deploying Your Projects Online</p>
+</header>
+
+<main>
+  <h2>🌐 Why Deploy?</h2>
+  <p>
+    Hosting your project online allows others to try it, share it, and even use it professionally. Whether it's a chatbot, resume tool, or assistant, deploying your ChatGPT API project is the final step to launch.
+  </p>
+
+  <h2>🚀 Option 1: Deploy on <a href="https://vercel.com" target="_blank">Vercel</a></h2>
+  <ol>
+    <li>Create a free account on Vercel.</li>
+    <li>Connect your GitHub repository (public or private).</li>
+    <li>Import your project and choose the root folder.</li>
+    <li>Click <strong>Deploy</strong>. Vercel handles everything!</li>
+  </ol>
+  <p><strong>Note:</strong> Vercel supports React, Next.js, and static HTML/JS websites.</p>
+
+  <h2>🌟 Bonus: Protect API Keys on Vercel</h2>
+  <p>
+    Go to your Vercel dashboard → Project Settings → Environment Variables. Add your API key there and access it in your JavaScript using a serverless function or proxy.
+  </p>
+
+  <h2>📦 Option 2: Deploy on <a href="https://netlify.com" target="_blank">Netlify</a></h2>
+  <ol>
+    <li>Sign up at Netlify.</li>
+    <li>Connect your GitHub repo or drag-and-drop your <code>dist</code> folder.</li>
+    <li>Click <strong>Deploy site</strong>.</li>
+    <li>Your site goes live instantly!</li>
+  </ol>
+  <p>
+    For environment variables, go to Site Settings → Environment Variables.
+  </p>
+
+  <h2>📁 Option 3: Use GitHub Pages</h2>
+  <p>This method is great for static HTML/CSS/JS projects:</p>
+  <ol>
+    <li>Push your project to GitHub in a public repository.</li>
+    <li>Go to your repo settings → Pages → Choose the branch (usually <code>main</code>).</li>
+    <li>Set the folder to <code>/root</code> or <code>/docs</code> as needed.</li>
+    <li>Your project will be hosted at: <code>https://username.github.io/project-name</code></li>
+  </ol>
+
+  <h2>🧠 Tip: Backend Proxies for Secure API Use</h2>
+  <p>
+    If you're building real apps, avoid exposing your OpenAI API key. Use a small Node.js backend or serverless function to handle requests securely.
+  </p>
+
+  <h2>✅ What You’ve Learned</h2>
+  <ul>
+    <li>Deploy ChatGPT projects with zero cost using Vercel, Netlify, or GitHub Pages.</li>
+    <li>Secure your OpenAI API key with environment variables.</li>
+    <li>Make your apps public and professional.</li>
+  </ul>
+
+  <a href="../index.html" class="read-more">← Back to Blog Home</a>
+</main>
+
+<footer>
+  <p>&copy; 2025 YourName. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

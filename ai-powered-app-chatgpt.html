@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How to Build an AI-Powered App with ChatGPT API</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #111;
+      font-family: "Segoe UI", sans-serif;
+    }
+    header, footer {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 20px 0;
+    }
+    .container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 30px 20px;
+    }
+    h1, h2, h3 {
+      color: #000;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+    ul {
+      margin-left: 20px;
+      line-height: 1.8;
+    }
+    img {
+      max-width: 100%;
+      border-radius: 10px;
+      margin: 20px 0;
+    }
+    a {
+      color: #000;
+      text-decoration: underline;
+    }
+    a:hover {
+      color: #444;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>InDepth Insights</h1>
+</header>
+
+<main class="container">
+  <h1>How to Build an AI-Powered App with ChatGPT API</h1>
+  <p class="meta">Published on April 30, 2025 • By Admin</p>
+
+  <img src="../images/ai-powered-app.jpg" alt="Building AI App with ChatGPT API">
+
+  <p>Artificial Intelligence (AI) is not just a buzzword — it's a transformative technology that's enabling developers to build next-gen applications. One of the most exciting applications of AI in 2025 is creating apps powered by advanced language models like OpenAI's ChatGPT API. In this post, we’ll guide you through the steps to build your own AI-powered app using ChatGPT’s capabilities.</p>
+
+  <h2>Prerequisites</h2>
+  <p>Before diving into the process of building the app, ensure you have the following:</p>
+  <ul>
+    <li>Basic knowledge of JavaScript and Node.js</li>
+    <li>OpenAI API access (sign up for an API key at <a href="https://beta.openai.com/signup/" target="_blank">OpenAI</a>)</li>
+    <li>A development environment setup (VS Code, Node.js, etc.)</li>
+    <li>Familiarity with REST APIs</li>
+  </ul>
+
+  <h2>Step 1: Setting Up the Project</h2>
+  <p>Start by creating a simple Node.js project.</p>
+  <pre><code>mkdir chatgpt-app
+cd chatgpt-app
+npm init -y
+npm install axios express</code></pre>
+  <p>We'll use Axios to make HTTP requests to the OpenAI API and Express to set up a basic server.</p>
+
+  <h2>Step 2: Initialize Express Server</h2>
+  <p>In your project directory, create a new file called <code>server.js</code>. Add the following code to set up a basic Express server:</p>
+  <pre><code>const express = require("express");
+const axios = require("axios");
+const app = express();
+const port = 3000;
+
+app.use(express.json());
+
+app.post("/ask", async (req, res) => {
+  const userMessage = req.body.message;
+
+  try {
+    const response = await axios.post("https://api.openai.com/v1/completions", {
+      model: "gpt-4",
+      prompt: userMessage,
+      max_tokens: 100,
+    }, {
+      headers: {
+        "Authorization": `Bearer YOUR_OPENAI_API_KEY`,
+        "Content-Type": "application/json",
+      }
+    });
+
+    res.send({ response: response.data.choices[0].text });
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("Something went wrong!");
+  }
+});
+
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});</code></pre>
+  <p>Replace <code>YOUR_OPENAI_API_KEY</code> with the API key you received from OpenAI.</p>
+
+  <h2>Step 3: Build the Frontend</h2>
+  <p>Next, create a simple frontend to interact with the app. You can use HTML, CSS, and JavaScript to build a user interface that allows users to enter a message and get a response from ChatGPT.</p>
+
+  <pre><code>index.html
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChatGPT App</title>
+  <style>
+    body { font-family: Arial, sans-serif; }
+    input, button { padding: 10px; }
+    #response { margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>Chat with AI</h1>
+  <input type="text" id="user-input" placeholder="Ask something..." />
+  <button onclick="sendMessage()">Send</button>
+
+  <div id="response"></div>
+
+  <script>
+    async function sendMessage() {
+      const message = document.getElementById("user-input").value;
+      const responseDiv = document.getElementById("response");
+
+      const res = await fetch("http://localhost:3000/ask", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message }),
+      });
+
+      const data = await res.json();
+      responseDiv.innerHTML = "<strong>AI says:</strong> " + data.response;
+    }
+  </script>
+</body>
+</html></code></pre>
+
+  <h2>Step 4: Run Your Application</h2>
+  <p>Start your backend server by running:</p>
+  <pre><code>node server.js</code></pre>
+  <p>Now, open <code>index.html</code> in your browser and you should be able to interact with your AI-powered app! Type a question, and ChatGPT will respond in real-time.</p>
+
+  <h2>Conclusion</h2>
+  <p>That's it! You've successfully built an AI-powered app with ChatGPT API. You can enhance this app further by adding more features like speech recognition, multilingual support, or even deploy it to the cloud for global access.</p>
+
+  <p><a href="../index.html">← Back to Blog Home</a></p>
+</main>
+
+<footer>
+  <p>&copy; 2025 InDepth Insights. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
